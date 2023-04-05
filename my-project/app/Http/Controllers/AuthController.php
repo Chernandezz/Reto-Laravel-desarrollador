@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -53,6 +54,19 @@ class AuthController extends Controller
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
+    }
+
+    public function register()
+    {
+        $credentials = request(['name', 'email', 'password', 'role']);
+
+        $credentials['password'] = bcrypt($credentials['password']);
+
+        $user = User::create($credentials);
+
+        $token = auth()->login($user);
+
+        return $this->respondWithToken($token);
     }
 
     /**
