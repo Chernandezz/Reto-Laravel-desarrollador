@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -16,6 +15,15 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
+
+    static public function isAdmin()
+    {
+        $user = auth()->user();
+        if (!$user || $user->role !== 'admin') {
+            return false;
+        }
+        return true;
     }
 
     /**
