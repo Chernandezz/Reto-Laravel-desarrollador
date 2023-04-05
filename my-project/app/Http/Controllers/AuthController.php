@@ -58,11 +58,26 @@ class AuthController extends Controller
 
     public function register()
     {
+        try {
+            $this->validate(request(), [
+                'name' => 'required|string',
+                'email' => 'required|string|email|unique:users',
+                'password' => 'required|string|confirmed',
+                'role' => 'required|string'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
+
         $credentials = request(['name', 'email', 'password', 'role']);
 
         $credentials['password'] = bcrypt($credentials['password']);
 
-        $user = User::create($credentials);
+        try {
+            $user = User::create($credentials);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
 
         $token = auth()->login($user);
 
