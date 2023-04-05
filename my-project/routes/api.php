@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MaquinariaController;
+use App\Http\Controllers\ReservaMaquinariaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,17 @@ Route::group(
         Route::post('delete/{id}', [MaquinariaController::class, 'delete']);
         Route::get('list', [MaquinariaController::class, 'list']);
         Route::post('update', [MaquinariaController::class, 'update']);
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'api',
+        'prefix' => 'reservamaquinaria'
+    ],
+    function () {
+        Route::post('create', [ReservaMaquinariaController::class, 'create']);
+        Route::get('list', [ReservaMaquinariaController::class, 'list']);
+        Route::get('list/{id}', [ReservaMaquinariaController::class, 'listUser']);
     }
 );
