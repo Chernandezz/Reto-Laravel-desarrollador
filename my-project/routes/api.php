@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MaquinariaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,17 @@ Route::group([
     Route::post('me', [AuthController::class, 'me']);
     Route::post('register', [AuthController::class, 'register']);
 });
+
+
+Route::group(
+    [
+        'middleware' => 'api',
+        'prefix' => 'maquinaria'
+    ],
+    function () {
+        Route::post('create', [MaquinariaController::class, 'create']);
+        Route::post('delete/{id}', [MaquinariaController::class, 'delete']);
+        Route::get('list', [MaquinariaController::class, 'list']);
+        Route::post('update', [MaquinariaController::class, 'update']);
+    }
+);
