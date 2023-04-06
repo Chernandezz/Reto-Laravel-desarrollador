@@ -66,4 +66,10 @@ class MaquinariaController extends Controller
         $maquinaria->delete();
         return response()->json(['message' => 'Maquina eliminada con exito'], 201);
     }
+
+    public function listCategoria($categoria)
+    {
+        $maquinaria = Maquinaria::where('category', $categoria)->get();
+        return response()->json($maquinaria);
+    }
 }

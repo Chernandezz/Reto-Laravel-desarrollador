@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\MaquinariaController;
 use App\Http\Controllers\ReservaMaquinariaController;
 
@@ -43,6 +44,7 @@ Route::group(
         Route::post('delete/{id}', [MaquinariaController::class, 'delete']);
         Route::get('list', [MaquinariaController::class, 'list']);
         Route::post('update', [MaquinariaController::class, 'update']);
+        Route::get('categoria/{categoria}', [MaquinariaController::class, 'listCategoria']);
     }
 );
 
@@ -55,5 +57,9 @@ Route::group(
         Route::post('create', [ReservaMaquinariaController::class, 'create']);
         Route::get('list', [ReservaMaquinariaController::class, 'list']);
         Route::get('list/{id}', [ReservaMaquinariaController::class, 'listUser']);
+        Route::get('list/{id}/{idMaquinaria}', [ReservaMaquinariaController::class, 'listUserMaquinaria']);
+        Route::get('list/rangofechas', [ReservaMaquinariaController::class, 'listRangoFechas']);
     }
 );
+
+Route::post('/pay', [PaymentController::class, 'pay'])->name('payment.pay');
