@@ -18,10 +18,12 @@ use App\Http\Controllers\ReservaMaquinariaController;
 |
 */
 
+// Ruta para obtener el usuario autenticado
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Rutas para autenticación de usuarios
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -33,7 +35,7 @@ Route::group([
     Route::post('register', [AuthController::class, 'register']);
 });
 
-
+// Rutas para operaciones relacionadas con la maquinaria
 Route::group(
     [
         'middleware' => 'api',
@@ -48,6 +50,7 @@ Route::group(
     }
 );
 
+// Rutas para operaciones relacionadas con reservas de maquinaria
 Route::group(
     [
         'middleware' => 'api',
@@ -62,4 +65,5 @@ Route::group(
     }
 );
 
+// Ruta para procesar pagos
 Route::post('/pay', [PaymentController::class, 'pay'])->name('payment.pay');

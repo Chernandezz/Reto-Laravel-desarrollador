@@ -14,11 +14,11 @@ class PaymentController extends Controller
     public function pay(Request $request)
     {
         // Configurar las credenciales de PayU
-        Config::setEnvironment($request->get('PAYU_TEST') ? 'sandbox' : 'production');
-        PayUConfig::setAccountId($request->get('PAYU_ACCOUNT_ID'));
-        PayUConfig::setMerchantId($request->get('PAYU_MERCHANT_ID'));
-        PayUConfig::setApiKey($request->get('PAYU_API_KEY'));
-        PayUConfig::setApiLogin($request->get('PAYU_API_LOGIN'));
+        Config::setEnvironment(env('PAYU_TEST') ? 'sandbox' : 'production');
+        PayUConfig::setAccountId(env('PAYU_ACCOUNT_ID'));
+        PayUConfig::setMerchantId(env('PAYU_MERCHANT_ID'));
+        PayUConfig::setApiKey(env('PAYU_API_KEY'));
+        PayUConfig::setApiLogin(env('PAYU_API_LOGIN'));
 
         // Crear la transacción con los datos del pago
         $transaction = new Transaction();

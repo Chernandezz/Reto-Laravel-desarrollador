@@ -21,3 +21,4 @@ services:
       - './my-project:/app'
     depends_on:
       - mariadb
+    command: php artisan migrate --seed
