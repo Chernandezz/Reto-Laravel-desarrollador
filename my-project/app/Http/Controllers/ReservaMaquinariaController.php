@@ -64,4 +64,23 @@ class ReservaMaquinariaController extends Controller
         $reservas = ReservaMaquinaria::where('user_id', $id)->get();
         return response()->json($reservas);
     }
+
+    public function listUserMaquinaria($id, $idMaquinaria)
+    {
+        $reservas = ReservaMaquinaria::where('user_id', $id)->where('maquinaria_id', $idMaquinaria)->get();
+        return response()->json($reservas);
+    }
+
+    public function listRangoFechas()
+    {
+        $rango = request()->all();
+        $reservas = ReservaMaquinaria::whereBetween('fecha_inicio', [$rango['fecha_inicio'], $rango['fecha_fin']])
+            ->orWhereBetween('fecha_fin', [$rango['fecha_inicio'], $rango['fecha_fin']])
+            ->orWhere(function ($query) use ($rango) {
+                $query->where('fecha_inicio', '<', $rango['fecha_inicio'])
+                    ->where('fecha_fin', '>', $rango['fecha_fin']);
+            })
+            ->get();
+        return response()->json($reservas);
+    }
 }

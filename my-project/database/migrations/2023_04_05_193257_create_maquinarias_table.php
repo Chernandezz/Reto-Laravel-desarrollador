@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('availability'); // 1 = disponible, 0 = no disponible, 2 = suspendida
             $table->integer('dailyPrice');
+            $table->string('category');
             $table->timestamps();
         });
     }
