@@ -1,6 +1,6 @@
 # Instalación
 
-1. Descargar la imagen de docker e instalarla
+1. Abrir el terminal en la carpeta raiz
 2. Montar el contenedor con "docker compose up"
 3. El proyecto se ejecutara y se hara la migracion de la BD automaticamente
 4. El proyecto ya se encuentra listo ejecutandose en "http://127.0.0.1:8000/"
