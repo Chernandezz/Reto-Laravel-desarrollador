@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Maquinaria;
 use Illuminate\Http\Request;
 use App\Models\ReservaMaquinaria;
-use App\Http\Controllers\AuthController;
 
 class ReservaMaquinariaController extends Controller
 {
@@ -74,11 +73,13 @@ class ReservaMaquinariaController extends Controller
     public function listRangoFechas()
     {
         $rango = request()->all();
-        $reservas = ReservaMaquinaria::whereBetween('fecha_inicio', [$rango['fecha_inicio'], $rango['fecha_fin']])
-            ->orWhereBetween('fecha_fin', [$rango['fecha_inicio'], $rango['fecha_fin']])
-            ->orWhere(function ($query) use ($rango) {
-                $query->where('fecha_inicio', '<', $rango['fecha_inicio'])
-                    ->where('fecha_fin', '>', $rango['fecha_fin']);
+        $fechaInicio = Carbon::parse($rango['fecha_inicio']);
+        $fechaFin = Carbon::parse($rango['fecha_fin']);
+        $reservas = ReservaMaquinaria::whereBetween('fecha_inicio', [$fechaInicio, $fechaFin])
+            ->orWhereBetween('fecha_fin', [$fechaInicio, $fechaFin])
+            ->orWhere(function ($query) use ($fechaInicio, $fechaFin) {
+                $query->where('fecha_inicio', '<', $fechaInicio)
+                    ->where('fecha_fin', '>', $fechaFin);
             })
             ->get();
         return response()->json($reservas);

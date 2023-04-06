@@ -58,7 +58,7 @@ Route::group(
         Route::get('list', [ReservaMaquinariaController::class, 'list']);
         Route::get('list/{id}', [ReservaMaquinariaController::class, 'listUser']);
         Route::get('list/{id}/{idMaquinaria}', [ReservaMaquinariaController::class, 'listUserMaquinaria']);
-        Route::get('list/rangofechas', [ReservaMaquinariaController::class, 'listRangoFechas']);
+        Route::get('rangofechas', [ReservaMaquinariaController::class, 'listRangoFechas']);
     }
 );
 
