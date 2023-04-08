@@ -1,10 +1,13 @@
 # Instalación
 
 1. Abrir el terminal en la carpeta raiz
-2. Montar el contenedor con "docker compose up"
-3. El proyecto se ejecutara y se hara la migracion de la BD automaticamente
-4. El proyecto ya se encuentra listo ejecutandose en "http://127.0.0.1:8000/"
-5. Empezar a probar y ejecutar las peticiones del postman que se encuentran en un archivo JSON en la raiz del proyeto
+2. Dirigirse a la carpeta my-proyect
+3. Ejecutar el comando composer i
+4. Regresar a la raiz del proyecto
+5. Montar el contenedor con "docker compose up"
+6. El proyecto se ejecutara y se hara la migracion de la BD automaticamente
+7. El proyecto ya se encuentra listo ejecutandose en "http://127.0.0.1:8000/"
+8. Empezar a probar y ejecutar las peticiones del postman que se encuentran en un archivo JSON en la raiz del proyeto
 
 ## Librerías usadas
 
