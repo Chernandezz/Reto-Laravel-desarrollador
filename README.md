@@ -5,33 +5,34 @@
 3. Ejecutar el comando composer i
 4. Regresar a la raiz del proyecto
 5. Montar el contenedor con "docker compose up"
-6. El proyecto se ejecutara y se hara la migracion de la BD automaticamente
-7. El proyecto ya se encuentra listo ejecutandose en "http://127.0.0.1:8000/"
-8. Empezar a probar y ejecutar las peticiones del postman que se encuentran en un archivo JSON en la raiz del proyeto
+6. En un nuevo terminal ir a la raiz del proyecto e ingresar al terminal del contenedor de laravel con "docker exec -it <nombre servicio laravel en el contenedor> bash"
+7. Ejecutar la migracion de la BD "php artisan migrate:refresh --seed"
+8. El proyecto ya se encuentra listo ejecutandose en "http://127.0.0.1:8000/" y con las respectivas tablas
+9. Empezar a probar y ejecutar las peticiones del postman que se encuentran en un archivo JSON en la raiz del proyeto
 
 ## Librerías usadas
 
--   JWT Auth: Para manejar el login del proyecto
--   fakerphp/faker: Para la creacion de los seeders
+- JWT Auth: Para manejar el login del proyecto
+- fakerphp/faker: Para la creacion de los seeders
 
 ## Otros
 
--   Se adjunta un archivo de postman con todas las apis con ejemplos y listas para ser probadas
+- Se adjunta un archivo de postman con todas las apis con ejemplos y listas para ser probadas
 
 ## Categorias creadas
 
--   Pesadas
--   Alicates
--   Taladro
+- Pesadas
+- Alicates
+- Taladro
 
 ## Tecnologias usadas
 
--   Laravel
--   PHP
--   Git
--   Github
--   Postman
--   Docker
+- Laravel
+- PHP
+- Git
+- Github
+- Postman
+- Docker
 
 ## Diccionario de datos
 
