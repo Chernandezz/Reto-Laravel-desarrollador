@@ -15,7 +15,7 @@
 
 5. Montar el contenedor con "docker compose up"
 
-6. En un nuevo terminal ir a la raiz del proyecto e ingresar al terminal del contenedor de laravel con "docker exec -it <nombre  servicio  laravel  en  el  contenedor> bash"
+6. En un nuevo terminal ir a la raiz del proyecto e ingresar al terminal del contenedor de laravel con "docker exec -it "nombre  servicio  laravel  en  el  contenedor" bash"
 
 7. Ejecutar la migracion de la BD "php artisan migrate:refresh --seed"
 
